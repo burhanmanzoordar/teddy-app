@@ -27,17 +27,20 @@ function goodnightMode() {
 }
 
 function typeWriter(text) {
-    let i = 0;
     const box = document.getElementById("responseBox");
-    box.innerText = "";
+    box.innerHTML = "";   // clear previous
+    let i = 0;
     const speed = 35;
 
     function typing() {
         if (i < text.length) {
-            box.innerText += text.charAt(i);
+            box.innerHTML += text[i];   // preserves spaces properly
             i++;
             setTimeout(typing, speed);
         }
     }
+
     typing();
 }
+
+

@@ -1,30 +1,43 @@
+function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
 const responses = {
-    love: "I love you more than words can explain. You matter deeply to me.",
-    proud: "I’m always proud of you. Even on hard days, you shine.",
-    sad: "If you're sad, I’m right here. You don’t have to go through it alone.",
-    miss: "Yes. In the softest and warmest way.",
-    stay: "As long as I breathe, I care for you."
+    love: "Of course I love you. You are deeply important to me.",
+    miss: "I miss you too. In the quiet moments especially.",
+    sad: "If you're sad, come here. You don’t have to carry it alone.",
+    proud: "I am always proud of you. Even when you don’t see your strength.",
+    stay: "I’m not going anywhere. I care about you.",
+    angry: "It’s okay to feel angry. I still choose you.",
+    insecure: "You are more than enough. Please never doubt your worth."
 };
 
-const goodnightMessages = [
-    "Close your eyes. You’re safe and loved.",
-    "Let today rest. Tomorrow will be gentle.",
-    "Sleep peacefully. I’m right here.",
-    "You did enough today. I’m proud of you.",
-    "Drift into dreams knowing I care."
-];
-
-function answerQuestion() {
-    const selected = document.getElementById("questionSelect").value;
-    
-    if (responses[selected]) {
-        document.getElementById("responseBox").innerText = responses[selected];
-    } else {
-        document.getElementById("responseBox").innerText = "Choose a question first.";
-    }
+function answer(key) {
+    const text = responses[key];
+    typeWriter(text);
+    closePopup();
 }
 
 function goodnightMode() {
-    const random = goodnightMessages[Math.floor(Math.random() * goodnightMessages.length)];
-    document.getElementById("responseBox").innerText = random;
+    typeWriter("Close your eyes. You are safe. You are loved. Sleep peacefully.");
+}
+
+function typeWriter(text) {
+    let i = 0;
+    const box = document.getElementById("responseBox");
+    box.innerText = "";
+    const speed = 35;
+
+    function typing() {
+        if (i < text.length) {
+            box.innerText += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
 }

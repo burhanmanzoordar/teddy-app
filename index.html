@@ -15,10 +15,20 @@
     <h1>🧸 Your Teddy</h1>
     <p class="subtitle">Always here for you.</p>
 
-    <div class="buttons">
-        <button onclick="askTeddy()">Ask Teddy</button>
-        <button onclick="goodnightMode()">🌙 Goodnight Mode</button>
-    </div>
+    <div class="question-section">
+    <select id="questionSelect">
+        <option value="">-- Choose a question --</option>
+        <option value="love">Do you love me?</option>
+        <option value="proud">Are you proud of me?</option>
+        <option value="sad">What if I'm sad?</option>
+        <option value="miss">Do you miss me?</option>
+        <option value="stay">Will you stay with me?</option>
+    </select>
+
+    <button onclick="answerQuestion()">Ask Teddy</button>
+    <button onclick="goodnightMode()">🌙 Goodnight Mode</button>
+</div>
+
 
     <div id="responseBox" class="response"></div>
 </div>
@@ -26,3 +36,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
